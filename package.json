@@ -1,0 +1,8 @@
+{
+  "name": "ehh-studio-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Usiniverse/ehh-studio-api.git",
+  "author": "Usiniverse <rkddbtls007@naver.com>",
+  "license": "MIT"
+}
