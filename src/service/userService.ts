@@ -7,9 +7,6 @@ export class UserService {
         try {
             dto.uid = uuidv4();
             const result = await userRepository.createUser(dto)
-    
-            console.log('서비스 ::: ', result);
-    
             return result;
         } catch(error) {
             console.error(error)
