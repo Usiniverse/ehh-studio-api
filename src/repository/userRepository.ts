@@ -60,14 +60,26 @@ export class UserRepository implements IUserRepository {
         }
     }
 
-    // getUser(id: number): Promise<User> {
-    //     const query = `SELECT * FROM users WHERE id = ?`
-    //     const value = [id]
+    public async getUser(id: number): Promise<User> {
+        const query = `SELECT * FROM users WHERE id = ?`
+        const value = [id]
 
-    //     try {
-    //         return new Promise
-    //     } catch(error) {
+        try {
+            const execute = await new Promise((resolve, reject) => {
+                pool.query(query, value, (queryError, results) => {
+                    if (queryError) {
+                        console.error("Error occurred while executing query:", queryError);
+                        reject(queryError)
+                    } else {
+                        resolve(results)
+                    }
+                })
+            })
 
-    //     }
-    // }
+            return this.mapRowToUserDTO(execute[0])
+        } catch(error) {
+            console.error(error);
+            throw error
+        }
+    }
 }
